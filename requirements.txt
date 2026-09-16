@@ -1,0 +1,9 @@
+# Direct dependencies verified with Python 3.12; transitive versions are not locked.
+fastapi==0.141.1
+uvicorn==0.52.4
+sqlalchemy==2.0.52
+pydantic==2.13.5
+PyJWT==2.14.0
+httpx==0.28.1
+pytest==9.1.1
+openai==3.13.0
