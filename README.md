@@ -1,9 +1,13 @@
 # Atlas — Business Operations Demo
 
-Atlas is a small Python prototype that reconstructs lead-processing journeys from
+Atlas is a compact Python prototype that reconstructs lead-processing journeys from
 sample events, summarizes manual work, and executes a fixed lead-routing workflow.
 It demonstrates process mining, graph validation, persisted workflow state, human
 approval, and assumption-based ROI calculations.
+
+**Repository history:** Atlas was developed before this GitHub repository was created.
+It was published here later, so the public commit history begins with the repository
+import rather than the project's original development timeline.
 
 ## Run locally
 
@@ -107,7 +111,7 @@ intentional for the current scope.
 
 ## Limitations
 
-- This is a local portfolio prototype, not production-ready software. There is no
+- This is a local prototype, not production-ready software. There is no
   password login, user provisioning, role management, or real CRM/notification
   integration. Disabling development mode does not supply replacement identity
   management.
