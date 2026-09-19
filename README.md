@@ -1,13 +1,13 @@
 # Atlas — Business Operations Demo
 
+**Portfolio role:** an earlier, intentionally compact prototype for exploring process mining and guarded workflow execution.
+
 Atlas is a compact Python prototype that reconstructs lead-processing journeys from
 sample events, summarizes manual work, and executes a fixed lead-routing workflow.
 It demonstrates process mining, graph validation, persisted workflow state, human
 approval, and assumption-based ROI calculations.
 
-**Repository history:** Atlas was developed before this GitHub repository was created.
-It was published here later, so the public commit history begins with the repository
-import rather than the project's original development timeline.
+**Portfolio note:** Atlas predates this public repository. It was added later as a small example of earlier workflow-design work, so its GitHub history begins at publication.
 
 ## Run locally
 
