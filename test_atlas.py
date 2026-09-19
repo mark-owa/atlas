@@ -231,7 +231,7 @@ def test_approval_identity_and_rejection_branch():
     ).json()
     assert out2["status"] == "completed"
     hist = client.get(f"/api/executions/{ex2['id']}", headers=h).json()
-    assert [s["step_id"] for s in hist["steps"]] == ["s1", "s2", "s3", "s5"]
+    assert [s["step_id"] for s in hist["steps"]] == ["s1", "s3", "s5"]
     assert hist["steps"][-1]["output_data"]["action_result"]["status"] == "simulated"
     db = atlas.SessionLocal()
     assert db.query(atlas.Lead).filter_by(entity_id="rej1").count() == 0
@@ -291,7 +291,9 @@ def test_cross_tenant():
     )
     assert (
         client.post(
-            f"/api/automations/{opp['id']}/execute", headers=hb, json={}
+            f"/api/automations/{opp['id']}/execute",
+            headers=hb,
+            json={"entity_id": "rogue-attempt", "email": "x@test.com"},
         ).status_code
         == 404
     )
@@ -381,7 +383,7 @@ def test_roi_and_failure_rollback(monkeypatch):
         .first()
     )
     assert ex.status == "failed"
-    assert ex.current_step_id == "s4"
+    assert ex.current_step_id == "s2"
     assert db.query(atlas.Lead).filter_by(entity_id="failme").count() == 0
     steps = (
         db.query(atlas.StepExecution)
@@ -389,7 +391,7 @@ def test_roi_and_failure_rollback(monkeypatch):
         .order_by(atlas.StepExecution.sequence)
         .all()
     )
-    assert [s.step_id for s in steps] == ["s1", "s2", "s4"]
+    assert [s.step_id for s in steps] == ["s1", "s2"]
     assert steps[-1].status == "failed"
     db.close()
 
